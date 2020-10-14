@@ -1,0 +1,26 @@
+{
+  "name": "@mo36924/build",
+  "version": "0.0.1",
+  "description": "@mo36924/build",
+  "author": "mo36924 <mo36924@users.noreply.github.com>",
+  "homepage": "https://github.com/mo36924/web-framework#readme",
+  "bugs": {
+    "url": "https://github.com/mo36924/web-framework/issues"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mo36924/web-framework.git",
+    "directory": "packages/build"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

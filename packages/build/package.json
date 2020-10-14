@@ -8,7 +8,9 @@
     "url": "https://github.com/mo36924/web-framework/issues"
   },
   "license": "MIT",
-  "main": "dist/index.js",
+  "bin": {
+    "web-framework-build": "dist/cli.js"
+  },
   "files": [
     "dist"
   ],
@@ -22,5 +24,10 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "p-queue": "^6.6.2",
+    "prettier": "^2.1.2"
   }
 }

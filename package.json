@@ -1,0 +1,13 @@
+{
+  "name": "web-framework",
+  "repository": "https://github.com/mo36924/web-framework.git",
+  "author": "mo36924 <mo36924@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

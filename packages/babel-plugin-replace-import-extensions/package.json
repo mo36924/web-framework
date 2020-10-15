@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/build",
+  "name": "babel-plugin-replace-import-extensions",
   "version": "0.0.4",
-  "description": "@mo36924/build",
+  "description": "@mo36924/babel-plugin-replace-import-extensions",
   "keywords": [
-    "build"
+    "babel-plugin-replace-import-extensions"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/build"
+    "directory": "packages/babel-plugin-replace-import-extensions"
   },
   "publishConfig": {
     "access": "public"
@@ -22,15 +22,9 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "web-framework-build": "dist/cli.js"
-  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "dependencies": {
-    "@babel/core": "^7.11.6",
-    "p-queue": "^6.6.2",
-    "prettier": "^2.1.2"
   }
 }

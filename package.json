@@ -5,6 +5,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "build": "web-framework-build",
+    "create-package": "web-framework-create-package"
+  },
   "prettier": {
     "printWidth": 120,
     "trailingComma": "all"

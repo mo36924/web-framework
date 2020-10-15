@@ -1,0 +1,41 @@
+{
+  "name": "@mo36924/graphsql",
+  "version": "0.0.9",
+  "description": "@mo36924/graphsql",
+  "keywords": [
+    "graphsql"
+  ],
+  "license": "MIT",
+  "author": "mo36924 <mo36924@users.noreply.github.com>",
+  "homepage": "https://github.com/mo36924/web-framework#readme",
+  "bugs": {
+    "url": "https://github.com/mo36924/web-framework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo36924/web-framework.git",
+    "directory": "packages/graphsql"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "change-case": "^4.1.1",
+    "graphql": "^15.3.0",
+    "pluralize": "^8.0.0"
+  }
+}

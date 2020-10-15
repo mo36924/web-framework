@@ -31,6 +31,7 @@ pkg = {
     files: undefined,
     main: undefined,
     module: undefined,
+    exports: undefined,
     scripts: undefined,
   },
   ...pkg,
@@ -49,6 +50,12 @@ pkg = {
   files: ["dist"],
   main: "dist/index.js",
   module: "dist/index.mjs",
+  exports: {
+    ".": {
+      import: "./dist/index.mjs",
+      require: "./dist/index.js",
+    },
+  },
 };
 
 writeFile(packageJson, JSON.stringify(pkg));

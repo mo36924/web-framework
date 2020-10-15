@@ -1,11 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { createRequire } from "module";
 import { join } from "path";
-import { baseDir, testMatch } from "./config";
-import { fixTsconfig } from "./fixTsconfig";
-import { outFilePath } from "./outFilePath";
-import { queue } from "./queue";
-import { writeFile } from "./writeFile";
+import { baseDir } from "./config";
 
 const _require = createRequire(join(baseDir, "index.js"));
 const tscPath = _require.resolve("typescript/lib/tsc.js");
@@ -27,23 +23,5 @@ if (!existsSync(_tscPath)) {
   writeFileSync(_tscPath, _tscSource);
 }
 
-fixTsconfig();
-
 export const ts: typeof import("typescript") & { tsc: () => void } = _require(_tscPath);
-
-ts.sys.writeFile = async (path: string, data: string, writeByteOrderMark?: boolean) => {
-  if (testMatch.test(path)) {
-    return;
-  }
-
-  queue.add(() => writeFile(outFilePath(path), data, writeByteOrderMark));
-};
-
-const exit = ts.sys.exit;
-
-ts.sys.exit = (exitCode) => {
-  queue.onIdle().then(
-    () => exit(exitCode),
-    () => exit(exitCode || 1),
-  );
-};
+export const tsc = ts.tsc;

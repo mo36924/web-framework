@@ -1,6 +1,6 @@
 import type { default as babel, NodePath, PluginObj, types as t } from "@babel/core";
 
-export function babelPluginReplaceImportExtensions(
+export default function babelPluginReplaceImportExtensions(
   { types: t }: typeof babel,
   options: { [ext: string]: string },
 ): PluginObj {

@@ -2,6 +2,32 @@ import { readFileSync, writeFileSync } from "fs";
 import { format, resolveConfig } from "prettier";
 import { packageRootDir, tsconfigPath } from "./config";
 
+const compilerOptions = {
+  incremental: true,
+  target: "ES2020",
+  module: "ES2020",
+  declaration: true,
+  declarationMap: true,
+  sourceMap: undefined,
+  inlineSourceMap: true,
+  inlineSources: true,
+  strict: true,
+  moduleResolution: "node",
+  esModuleInterop: true,
+  skipLibCheck: true,
+  forceConsistentCasingInFileNames: true,
+  importsNotUsedAsValues: "error",
+  newLine: "lf",
+  emitBOM: false,
+  rootDir: "packages",
+  outDir: undefined,
+  outFile: undefined,
+  baseUrl: "packages",
+  paths: {
+    "@mo36924/*": [`*/${packageRootDir}`],
+  },
+};
+
 export function fixTsconfig() {
   let tsconfig;
   let tsconfigJson = "";
@@ -16,26 +42,9 @@ export function fixTsconfig() {
   tsconfig.extends = undefined;
 
   tsconfig.compilerOptions = {
+    ...compilerOptions,
     ...tsconfig.compilerOptions,
-    incremental: true,
-    target: "ES2020",
-    module: "CommonJS",
-    declaration: true,
-    declarationMap: true,
-    sourceMap: true,
-    inlineSources: true,
-    strict: true,
-    moduleResolution: "node",
-    esModuleInterop: true,
-    skipLibCheck: true,
-    forceConsistentCasingInFileNames: true,
-    importsNotUsedAsValues: "error",
-    newLine: "lf",
-    rootDir: "packages",
-    baseUrl: "packages",
-    paths: {
-      "@mo36924/*": [`*/${packageRootDir}`],
-    },
+    ...compilerOptions,
   };
 
   tsconfig.include = [

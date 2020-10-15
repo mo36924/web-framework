@@ -34,6 +34,7 @@ pkg = {
     scripts: undefined,
   },
   ...pkg,
+  name: packageName,
   description: packageName,
   keywords: [name],
   license: "MIT",

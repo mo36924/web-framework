@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/jest-snapshot-serializer-graphql",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "@mo36924/jest-snapshot-serializer-graphql",
   "keywords": [
     "jest-snapshot-serializer-graphql"

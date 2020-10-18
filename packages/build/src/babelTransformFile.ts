@@ -37,6 +37,9 @@ export async function babelTransformFile(path: string, data: string) {
   const commonjsPath = path.replace(scriptRegExp, ".js");
   const commonjsMapPath = `${commonjsPath}.map`;
 
+  module!.map!.sources[0] = `../src/${module!.map!.sources[0]}`;
+  commonjs!.map!.sources[0] = `../src/${commonjs!.map!.sources[0]}`;
+
   writeFile(modulePath, addSourceMappingURL(module!.code!, moduleMapPath));
   writeFile(moduleMapPath, JSON.stringify(module!.map!));
   writeFile(commonjsPath, addSourceMappingURL(commonjs!.code!, commonjsMapPath));

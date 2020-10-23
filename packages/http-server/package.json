@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/jest-snapshot-serializer-graphql",
+  "name": "@mo36924/http-server",
   "version": "0.0.10",
-  "description": "@mo36924/jest-snapshot-serializer-graphql",
+  "description": "@mo36924/http-server",
   "keywords": [
-    "jest-snapshot-serializer-graphql"
+    "http-server"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/jest-snapshot-serializer-graphql"
+    "directory": "packages/http-server"
   },
   "publishConfig": {
     "access": "public"
@@ -32,8 +32,5 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "dependencies": {
-    "graphql": "^15.3.0"
   }
 }

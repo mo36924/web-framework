@@ -27,12 +27,10 @@ export function patchTypescript(ts: typeof typescript) {
       return;
     }
 
-    path = outFilePath(path);
-
     if (scriptRegExp.test(path)) {
       babelTransformFile(path, data);
     } else {
-      writeFile(path, data);
+      writeFile(outFilePath(path), data);
     }
   };
 

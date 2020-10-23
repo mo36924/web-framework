@@ -13,6 +13,7 @@ export const getNonListFieldName = (fieldName: string) => camelCase(singular(fie
 export const getListFieldName = (fieldName: string) => camelCase(plural(fieldName));
 export const getKeyFieldName = (name: string) => `${getNonListFieldName(name)}Id`;
 export const getOrderName = (name: string) => constantCase(name);
+export const primaryKeyTypeName = "Int";
 export const customScalarTypeNames = ["Date"];
 export const scalarTypeNames = ["ID", "Int", "Float", "String", "Boolean", ...customScalarTypeNames];
 export const comparisonOperators = ["eq", "ne", "gt", "lt", "ge", "le", "in", "ni", "li", "nl"];

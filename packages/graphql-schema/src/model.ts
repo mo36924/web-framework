@@ -2,12 +2,10 @@ import { buildSchema } from "graphql";
 import { baseTypeFields } from "./baseFields";
 import { customScalars } from "./customScalars";
 import { modelDirectives } from "./directives";
-import { Field, FieldDirectives, Fields, getTypes, Types, printTypes } from "./types";
-import { copyTypes, createObject, getJoinTypeName, getListFieldName, getNonListFieldName, getTypeName } from "./util";
+import { Field, FieldDirectives, Fields, getTypes, printTypes, Types } from "./types";
+import { copyTypes, createObject, getJoinTypeName, getListFieldName, getNonListFieldName, getTypeName } from "./utils";
 
 const deleteBaseFields = (types: Types) => {
-  types = copyTypes(types);
-
   for (const { fields } of Object.values(types)) {
     for (const fieldName of Object.keys(fields)) {
       if (fieldName in baseTypeFields) {

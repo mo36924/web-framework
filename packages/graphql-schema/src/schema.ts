@@ -2,7 +2,7 @@ import { buildSchema } from "graphql";
 import { baseJoinTypeFields, baseTypeFields } from "./baseFields";
 import { customScalars } from "./customScalars";
 import { schemaDirectives } from "./directives";
-import { getTypes, Types, printDirectives, printFieldType } from "./types";
+import { getTypes, printDirectives, printFieldType, Types } from "./types";
 import {
   comparisonOperators,
   copyTypes,
@@ -13,8 +13,27 @@ import {
   getNonListFieldName,
   getOrderName,
   getTypeName,
+  primaryKeyTypeName,
   scalarTypeNames,
-} from "./util";
+} from "./utils";
+
+export type Where = {
+  [key: string]: {
+    eq?: any;
+    ne?: any;
+    gt?: any;
+    lt?: any;
+    ge?: any;
+    le?: any;
+    in?: any;
+    ni?: any;
+    li?: any;
+    nl?: any;
+  };
+  not?: any;
+  and?: any;
+  or?: any;
+};
 
 const fixRelation = (types: Types) => {
   types = copyTypes(types);
@@ -33,6 +52,7 @@ const fixRelation = (types: Types) => {
       }
 
       if (typeDirective) {
+        typeDirective.keys = [getKeyFieldName(typeName), getKeyFieldName(field.type)];
         const joinTypeName = typeDirective.name;
 
         if (types[joinTypeName]) {
@@ -40,14 +60,13 @@ const fixRelation = (types: Types) => {
         }
 
         const typeNames = [typeName, field.type].sort();
-        const ids = typeNames.map((typeName) => types[typeName].fields.id.type);
         const keys = typeNames.map((typeName) => getKeyFieldName(typeName));
 
         types[joinTypeName] = {
           directives: { join: {} },
           fields: createObject({
             [keys[0]]: {
-              type: ids[0],
+              type: primaryKeyTypeName,
               list: false,
               null: false,
               scalar: true,
@@ -56,7 +75,7 @@ const fixRelation = (types: Types) => {
               },
             },
             [keys[1]]: {
-              type: ids[1],
+              type: primaryKeyTypeName,
               list: false,
               null: false,
               scalar: true,
@@ -74,6 +93,7 @@ const fixRelation = (types: Types) => {
         const refTypeFieldName = fieldDirective.name;
         const refTypeFields = types[field.type].fields;
         const keyFieldName = getKeyFieldName(refTypeFieldName);
+        fieldDirective.key = keyFieldName;
 
         if (refTypeFields[keyFieldName]?.directives.ref) {
           continue;
@@ -94,7 +114,7 @@ const fixRelation = (types: Types) => {
         };
 
         refTypeFields[keyFieldName] = {
-          type: type.fields.id.type,
+          type: primaryKeyTypeName,
           list: false,
           null: _null,
           scalar: true,
@@ -127,22 +147,23 @@ const fixRelation = (types: Types) => {
           continue;
         }
 
-        const ids = typeNames.map((typeName) => types[typeName].fields.id.type);
-        const keyFieldNames = typeNames.map((typeName) => getKeyFieldName(typeName));
-
         directives.type = {
           name: joinTypeName,
+          keys: [getKeyFieldName(typeName), getKeyFieldName(refTypeName)],
         };
 
         refListField.directives.type = {
           name: joinTypeName,
+          keys: [getKeyFieldName(refTypeName), getKeyFieldName(typeName)],
         };
+
+        const keyFieldNames = typeNames.map((typeName) => getKeyFieldName(typeName));
 
         types[joinTypeName] = {
           directives: { join: {} },
           fields: createObject({
             [keyFieldNames[0]]: {
-              type: ids[0],
+              type: primaryKeyTypeName,
               list: false,
               null: false,
               scalar: true,
@@ -153,7 +174,7 @@ const fixRelation = (types: Types) => {
               },
             },
             [keyFieldNames[1]]: {
-              type: ids[1],
+              type: primaryKeyTypeName,
               list: false,
               null: false,
               scalar: true,
@@ -176,6 +197,7 @@ const fixRelation = (types: Types) => {
 
         directives.field = {
           name: refNonListFieldName,
+          key: keyFieldName,
         };
 
         refTypeFields[refNonListFieldName] = {
@@ -191,7 +213,7 @@ const fixRelation = (types: Types) => {
         };
 
         refTypeFields[keyFieldName] = {
-          type: type.fields.id.type,
+          type: primaryKeyTypeName,
           list: false,
           null: true,
           scalar: true,
@@ -213,6 +235,7 @@ const fixRelation = (types: Types) => {
 
           directives.field = {
             name: refNonListFieldName,
+            key: keyFieldName,
           };
 
           refTypeFields[refNonListFieldName] = {
@@ -226,7 +249,7 @@ const fixRelation = (types: Types) => {
           };
 
           refTypeFields[keyFieldName] = {
-            type: type.fields.id.type,
+            type: primaryKeyTypeName,
             list: false,
             null: true,
             scalar: true,
@@ -247,7 +270,7 @@ const fixRelation = (types: Types) => {
             null: true,
             scalar: false,
             directives: {
-              field: { name: fieldName },
+              field: { name: fieldName, key: keyFieldName },
             },
           };
 
@@ -256,7 +279,7 @@ const fixRelation = (types: Types) => {
           };
 
           type.fields[keyFieldName] = {
-            type: refType.fields.id.type,
+            type: primaryKeyTypeName,
             list: false,
             null: false,
             scalar: true,
@@ -282,9 +305,9 @@ const insertBaseFields = (types: Types) => {
 
   for (const type of Object.values(types)) {
     if (type.directives.join) {
-      type.fields = createObject({ ...baseJoinTypeFields, ...type.fields, ...baseJoinTypeFields });
+      type.fields = createObject({ ...baseJoinTypeFields, ...type.fields });
     } else {
-      type.fields = createObject({ ...baseTypeFields, ...type.fields, ...baseTypeFields });
+      type.fields = createObject({ ...baseTypeFields, ...type.fields });
     }
   }
 
@@ -493,7 +516,6 @@ const printSchema = (types: Types) => {
 
 export const schema = (source: string) => {
   let types = getTypes(source);
-  types = insertBaseFields(types);
   types = fixRelation(types);
   types = insertBaseFields(types);
   let schema = printSchema(types);

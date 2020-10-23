@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/graphsql",
+  "name": "@mo36924/jest-snapshot-serializer-preact",
   "version": "0.0.10",
-  "description": "@mo36924/graphsql",
+  "description": "@mo36924/jest-snapshot-serializer-preact",
   "keywords": [
-    "graphsql"
+    "jest-snapshot-serializer-preact"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/graphsql"
+    "directory": "packages/jest-snapshot-serializer-preact"
   },
   "publishConfig": {
     "access": "public"
@@ -34,8 +34,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "change-case": "^4.1.1",
-    "graphql": "^15.3.0",
-    "pluralize": "^8.0.0"
+    "preact": "^10.5.5",
+    "preact-render-to-string": "^5.1.11"
   }
 }

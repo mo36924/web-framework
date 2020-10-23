@@ -1,5 +1,5 @@
 import { buildSchema, DirectiveNode, getDirectiveValues } from "graphql";
-import { createObject } from "./util";
+import { createObject } from "./utils";
 
 export const modelDirectives = `
 directive @field(name: String!) on FIELD_DEFINITION
@@ -11,7 +11,8 @@ directive @join on OBJECT
 directive @unique on FIELD_DEFINITION
 directive @key(name: String!) on FIELD_DEFINITION
 directive @ref(name: String!) on FIELD_DEFINITION
-${modelDirectives}
+directive @field(name: String! key: String!) on FIELD_DEFINITION
+directive @type(name: String! keys: [String!]!) on FIELD_DEFINITION
 `;
 
 const directiveSchema = buildSchema(schemaDirectives);

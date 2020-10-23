@@ -38,9 +38,9 @@ it("graphql-schema", () => {
 
     directive @ref(name: String!) on FIELD_DEFINITION
 
-    directive @field(name: String!) on FIELD_DEFINITION
+    directive @field(name: String!, key: String!) on FIELD_DEFINITION
 
-    directive @type(name: String!) on FIELD_DEFINITION
+    directive @type(name: String!, keys: [String!]!) on FIELD_DEFINITION
 
     type Query {
       user(where: WhereUser, order: [OrderUser!], offset: Int): User
@@ -65,9 +65,9 @@ it("graphql-schema", () => {
       createdAt: Date!
       updatedAt: Date!
       name: String!
-      profile: Profile @field(name: "user")
+      profile: Profile @field(name: "user", key: "userId")
       class: Class @key(name: "classId")
-      clubs(where: WhereClub, order: [OrderClub!], limit: Int, offset: Int): [Club!]! @type(name: "ClubToUser")
+      clubs(where: WhereClub, order: [OrderClub!], limit: Int, offset: Int): [Club!]! @type(name: "ClubToUser", keys: ["userId", "clubId"])
       classId: Int @ref(name: "Class")
     }
 
@@ -87,7 +87,7 @@ it("graphql-schema", () => {
       createdAt: Date!
       updatedAt: Date!
       name: String!
-      users(where: WhereUser, order: [OrderUser!], limit: Int, offset: Int): [User!]! @field(name: "class")
+      users(where: WhereUser, order: [OrderUser!], limit: Int, offset: Int): [User!]! @field(name: "class", key: "classId")
     }
 
     type Club {
@@ -96,7 +96,7 @@ it("graphql-schema", () => {
       createdAt: Date!
       updatedAt: Date!
       name: String!
-      users(where: WhereUser, order: [OrderUser!], limit: Int, offset: Int): [User!]! @type(name: "ClubToUser")
+      users(where: WhereUser, order: [OrderUser!], limit: Int, offset: Int): [User!]! @type(name: "ClubToUser", keys: ["clubId", "userId"])
     }
 
     type ClubToUser @join {

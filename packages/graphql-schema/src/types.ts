@@ -1,6 +1,6 @@
 import { parse } from "graphql";
 import { getDirectives } from "./directives";
-import { copyTypes, isScalarTypeName } from "./util";
+import { copyTypes, isScalarTypeName } from "./utils";
 
 export type Types = { [typeName: string]: Type };
 export type Type = { fields: Fields; directives: TypeDirectives };
@@ -8,8 +8,8 @@ export type TypeDirectives = { join?: {} };
 export type Fields = { [fieldName: string]: Field };
 export type Field = { type: string; scalar: boolean; null: boolean; list: boolean; directives: FieldDirectives };
 export type FieldDirectives = {
-  field?: { name: string };
-  type?: { name: string };
+  field?: { name: string; key: string };
+  type?: { name: string; keys: [string, string] };
   key?: { name: string };
   ref?: { name: string };
   unique?: {};

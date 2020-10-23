@@ -1,5 +1,5 @@
-import { it, expect } from "@jest/globals";
-import { buildASTSchema, buildSchema, Source } from "graphql";
+import { expect, it } from "@jest/globals";
+import { buildSchema, Source } from "graphql";
 import { customScalars } from "./customScalars";
 import { modelDirectives } from "./directives";
 import { model } from "./model";

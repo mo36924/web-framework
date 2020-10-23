@@ -8,12 +8,12 @@ declare module "graphql/jsutils/promiseReduce" {
   import type { PromiseOrValue } from "graphql/jsutils/PromiseOrValue";
   export default function promiseReduce<T, U>(
     values: ReadonlyArray<T>,
-    callback: (U, T) => PromiseOrValue<U>,
+    callback: (u: U, t: T) => PromiseOrValue<U>,
     initialValue: PromiseOrValue<U>,
   ): PromiseOrValue<U>;
 }
 declare module "graphql/jsutils/promiseForObject" {
-  import type { ObjMap } from "graphql/jsutils/ObjMap";
+  type ObjMap<T> = { [key: string]: T };
   export default function promiseForObject<T>(object: ObjMap<Promise<T>>): Promise<ObjMap<T>>;
 }
 declare module "graphql/jsutils/inspect" {
@@ -31,5 +31,5 @@ declare module "graphql/jsutils/memoize3" {
     A2 extends ReadonlyArray<any>,
     A3 extends ReadonlyArray<any>,
     R extends any
-  >(fn: (A1, A2, A3) => R): (A1, A2, A3) => R;
+  >(fn: (a1: A1, a2: A2, a3: A3) => R): (a1: A1, a2: A2, a3: A3) => R;
 }

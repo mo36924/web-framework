@@ -1,3 +1,4 @@
+import type { IncomingMessage } from "http";
 import type { FieldDirectives, Where } from "@mo36924/graphql-schema";
 import { camelCase, noCase } from "change-case";
 import {
@@ -9,10 +10,12 @@ import {
   isScalarType,
 } from "graphql";
 import { escape, escapeId } from "sqlstring";
-import type { Context } from "./context";
 
-export async function fieldResolver(source: any, args: any, context: Context, info: GraphQLResolveInfo) {
-  if (info.operation.operation === "mutation" && info.parentType === info.schema.getMutationType()) {
+export async function fieldResolver(source: any, args: any, context: IncomingMessage, info: GraphQLResolveInfo) {
+  const { main, replica } = context.mysql;
+  const query = info.operation.operation === "mutation" ? main : replica;
+
+  if (info.parentType === info.schema.getMutationType()) {
   }
 
   const nullableType = getNullableType(info.returnType);
@@ -24,9 +27,11 @@ export async function fieldResolver(source: any, args: any, context: Context, in
 
   const { where, order, limit, offset } = args;
   const { field, type }: FieldDirectives = getFieldDirectives(info);
+  const list = isListType(nullableType);
   const table = namedType.name;
   let sql = `select * from ${escapeId(table)}`;
   const _where = whereStringify(where);
+  const _order = orderStringify(order);
 
   if (field) {
     if (!_where) {
@@ -35,28 +40,26 @@ export async function fieldResolver(source: any, args: any, context: Context, in
       sql += ` where ${escapeId(field.key)} = ${escape(source.id)} and ${_where}`;
     }
   } else if (type) {
-    const result = await context.query(
-      `select ${escapeId(type.keys[1])} as id from ${escapeId(type.name)} where ${escapeId(type.keys[0])} = ${escape(
-        source.id,
-      )}`,
+    const result = await query(
+      `select ${escapeId(type.keys[1])} as ${escapeId("id")} from ${escapeId(type.name)} where ${escapeId(
+        type.keys[0],
+      )} = ${escape(source.id)}`,
     );
 
     if (result.length === 0) {
       return [];
     }
 
-    const ids = result.map((row) => row.id);
+    const ids = result.map((row) => escape(row.id)).join();
 
     if (!_where) {
-      sql += ` where id in (${escape(ids)})`;
+      sql += ` where id in (${ids})`;
     } else {
-      sql += ` where id in (${escape(ids)}) and ${_where}`;
+      sql += ` where id in (${ids}) and ${_where}`;
     }
   } else if (_where) {
     sql += ` where ${_where}`;
   }
-
-  const _order = orderStringify(order);
 
   if (_order) {
     sql += ` order by ${_order}`;
@@ -64,14 +67,16 @@ export async function fieldResolver(source: any, args: any, context: Context, in
 
   if (limit != null) {
     sql += ` limit ${escape(limit)}`;
+  } else if (!list) {
+    sql += ` limit 1`;
   }
 
   if (offset != null) {
     sql += ` offset ${escape(offset)}`;
   }
 
-  const result = await context.query(sql);
-  return isListType(nullableType) ? result : result[0];
+  const result = await query(sql);
+  return list ? result : result[0];
 }
 
 function getFieldDirectives(info: GraphQLResolveInfo) {

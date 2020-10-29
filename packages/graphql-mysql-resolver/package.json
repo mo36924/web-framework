@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/graphql",
+  "name": "@mo36924/graphql-mysql-resolver",
   "version": "0.0.11",
-  "description": "@mo36924/graphql",
+  "description": "@mo36924/graphql-mysql-resolver",
   "keywords": [
-    "graphql"
+    "graphql-mysql-resolver"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/graphql"
+    "directory": "packages/graphql-mysql-resolver"
   },
   "publishConfig": {
     "access": "public"
@@ -34,6 +34,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "graphql": "15.3.0"
+    "change-case": "^4.1.1",
+    "sqlstring": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/sqlstring": "^2.2.1"
   }
 }

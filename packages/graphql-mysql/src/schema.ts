@@ -1,4 +1,4 @@
-import { getTypes, createObject } from "@mo36924/graphql-schema";
+import { createObject, getTypes } from "@mo36924/graphql-schema";
 import { escapeId } from "sqlstring";
 
 const dbTypes = createObject<{ [key: string]: string }>({

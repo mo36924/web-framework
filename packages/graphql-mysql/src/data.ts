@@ -1,5 +1,14 @@
-import { getTypes, Types, createObject } from "@mo36924/graphql-schema";
+import { createObject, getTypes, Types } from "@mo36924/graphql-schema";
 import { escape, escapeId } from "sqlstring";
+
+export const data = (schema: string) => {
+  const { Query, Mutation, ...types } = getTypes(schema);
+  let sql = "";
+  sql += `set foreign_key_checks=0;\n`;
+  sql += getInsertQueries(types);
+  sql += `set foreign_key_checks=1;\n`;
+  return sql;
+};
 
 const defaultScalarValues = createObject<{ [key: string]: any }>({
   ID: "",
@@ -75,13 +84,4 @@ const getInsertQueries = (types: Types, baseRecordCount = 3) => {
   };
 
   return Object.keys(types).map(getInsertQuery).join("");
-};
-
-export const data = (schema: string) => {
-  const { Query, Mutation, ...types } = getTypes(schema);
-  let sql = "";
-  sql += `set foreign_key_checks=0;\n`;
-  sql += getInsertQueries(types);
-  sql += `set foreign_key_checks=1;\n`;
-  return sql;
 };

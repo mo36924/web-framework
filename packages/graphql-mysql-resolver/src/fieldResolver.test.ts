@@ -1,12 +1,11 @@
 import { execSync } from "child_process";
 import { promisify } from "util";
 import { afterAll, beforeAll, expect, it, jest } from "@jest/globals";
+import { data as mysqlData, schema as mysqlSchema } from "@mo36924/graphql-mysql";
 import { model as graphqlModel, schema as graphqlSchema } from "@mo36924/graphql-schema";
 import { buildSchema, graphql } from "graphql";
 import { ConnectionConfig, createPool, Pool } from "mysql";
-import { data as mysqlData } from "./data";
 import { fieldResolver } from "./fieldResolver";
-import { schema as mysqlSchema } from "./schema";
 
 const user = "root";
 const password = "password";

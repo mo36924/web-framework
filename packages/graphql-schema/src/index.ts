@@ -1,5 +1,3 @@
-import "module";
-
 export * from "./model";
 export * from "./schema";
 export * from "./utils";

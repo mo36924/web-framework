@@ -108,8 +108,8 @@
     ]
   },
   "dependencies": {
-    "@mo36924/build": "^0.0.9",
-    "@mo36924/create-package": "^0.0.9"
+    "@mo36924/build": "0.0.11",
+    "@mo36924/create-package": "^0.0.11"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.10",
@@ -119,6 +119,7 @@
     "@types/prettier": "^2.1.2",
     "@types/sqlstring": "^2.2.1",
     "@typescript-eslint/parser": "^4.4.1",
+    "del-cli": "^3.0.1",
     "eslint": "^7.11.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react-hooks": "^4.1.2",

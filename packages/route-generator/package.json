@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/graphql-mysql",
+  "name": "@mo36924/route-generator",
   "version": "0.0.11",
-  "description": "@mo36924/graphql-mysql",
+  "description": "@mo36924/route-generator",
   "keywords": [
-    "graphql-mysql"
+    "route-generator"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/graphql-mysql"
+    "directory": "packages/route-generator"
   },
   "publishConfig": {
     "access": "public"
@@ -34,7 +34,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@mo36924/graphql-schema": "^0.0.11",
-    "sqlstring": "^2.3.2"
+    "chokidar": "^3.4.3",
+    "prettier": "^2.1.2"
   }
 }

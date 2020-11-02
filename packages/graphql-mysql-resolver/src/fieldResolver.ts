@@ -1,5 +1,5 @@
-import type { IncomingMessage } from "http";
 import type { FieldDirectives, Where } from "@mo36924/graphql-schema";
+import type { Request } from "@mo36924/http-server";
 import { camelCase, noCase } from "change-case";
 import {
   getDirectiveValues,
@@ -11,9 +11,9 @@ import {
 } from "graphql";
 import { escape, escapeId } from "sqlstring";
 
-export async function fieldResolver(source: any, args: any, context: IncomingMessage, info: GraphQLResolveInfo) {
-  const { main, replica } = context.mysql;
-  const query = info.operation.operation === "mutation" ? main : replica;
+export async function fieldResolver(source: any, args: any, context: Request, info: GraphQLResolveInfo) {
+  const mysql = context.mysql;
+  const query = info.operation.operation === "mutation" ? mysql.main : mysql.replica;
 
   if (info.parentType === info.schema.getMutationType()) {
   }

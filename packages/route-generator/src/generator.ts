@@ -6,11 +6,11 @@ import { format as prettierFormat, resolveConfig } from "prettier";
 
 export type Options = {
   watch?: boolean;
-  dir: string;
-  paths: string | string[];
-  component: string;
-  template: string;
-  ignore: string | string[];
+  dir?: string;
+  paths?: string | string[];
+  component?: string;
+  template?: string;
+  ignore?: string | string[];
 };
 
 const defaultTemplate = `
@@ -88,10 +88,10 @@ export default class Router extends Component<{ href: string }, RouteContextValu
 }
 `;
 
-export async function routeGenerator(options: Options) {
+export async function routeGenerator(options?: Options) {
   const {
     watch: watchMode = false,
-    dir = "pages",
+    dir = "routes",
     paths = ["**/*.tsx"],
     component = "components/Router.tsx",
     template = "components/Router.txt",

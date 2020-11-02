@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/fastify-mysql",
+  "name": "@mo36924/http-server-mysql",
   "version": "0.0.12",
-  "description": "@mo36924/fastify-mysql",
+  "description": "@mo36924/http-server-mysql",
   "keywords": [
-    "fastify-mysql"
+    "http-server-mysql"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/fastify-mysql"
+    "directory": "packages/http-server-mysql"
   },
   "publishConfig": {
     "access": "public"
@@ -34,10 +34,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "fastify-plugin": "^3.0.0",
+    "@mo36924/http-server": "^0.0.11",
     "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "fastify": "^3.7.0"
   }
 }

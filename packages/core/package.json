@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/core",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "@mo36924/core",
   "keywords": [
     "core"
@@ -37,7 +37,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@mo36924/route-generator": "^0.0.13",
+    "@mo36924/route-generator": "^0.0.14",
     "commander": "^6.2.0",
     "cosmiconfig": "^7.0.0"
   }

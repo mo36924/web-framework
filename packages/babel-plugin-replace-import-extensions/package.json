@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/babel-plugin-replace-import-extensions",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "@mo36924/babel-plugin-replace-import-extensions",
   "keywords": [
     "babel-plugin-replace-import-extensions"

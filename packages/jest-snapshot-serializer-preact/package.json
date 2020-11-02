@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/jest-snapshot-serializer-preact",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "@mo36924/jest-snapshot-serializer-preact",
   "keywords": [
     "jest-snapshot-serializer-preact"

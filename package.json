@@ -109,7 +109,7 @@
     ]
   },
   "dependencies": {
-    "@mo36924/build": "0.0.11",
+    "@mo36924/build": "0.0.13",
     "@mo36924/create-package": "^0.0.11"
   },
   "devDependencies": {

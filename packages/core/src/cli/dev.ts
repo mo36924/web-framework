@@ -8,7 +8,7 @@ export async function dev() {
     const config = await getConfig();
     const filepath = config.filepath;
 
-    const worker = new Worker(__filename, {
+    const worker = new Worker(new URL(import.meta.url), {
       workerData: config,
     });
 

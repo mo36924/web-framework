@@ -37,6 +37,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "@mo36924/route-generator": "^0.0.13",
     "commander": "^6.2.0",
     "cosmiconfig": "^7.0.0"
   }

@@ -3,6 +3,7 @@ import { transformAsync, transformFromAstAsync } from "@babel/core";
 import babelPluginTransformModulesCommonjs from "@babel/plugin-transform-modules-commonjs";
 import babelPresetEnv from "@babel/preset-env";
 import babelPresetReact from "@babel/preset-react";
+import babelPluginImportMetaUrl from "@mo36924/babel-plugin-import-meta-url";
 import babelPluginReplaceImportExtensions from "@mo36924/babel-plugin-replace-import-extensions";
 import { addSourceMappingURL } from "./addSourceMappingURL";
 import { scriptRegExp } from "./config";
@@ -43,7 +44,11 @@ export async function babelTransformFile(path: string, data: string) {
     sourceMaps: true,
     inputSourceMap: sourceMap,
     filename: path,
-    plugins: [[babelPluginReplaceImportExtensions, { ".mjs": ".js" }], babelPluginTransformModulesCommonjs],
+    plugins: [
+      babelPluginImportMetaUrl,
+      [babelPluginReplaceImportExtensions, { ".mjs": ".js" }],
+      babelPluginTransformModulesCommonjs,
+    ],
   });
 
   path = outFilePath(path);

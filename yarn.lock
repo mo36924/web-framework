@@ -2052,31 +2052,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@mo36924/babel-plugin-replace-import-extensions@0.0.11", "@mo36924/babel-plugin-replace-import-extensions@^0.0.11":
+"@mo36924/babel-plugin-replace-import-extensions@0.0.11":
   version "0.0.11"
   resolved "https://registry.yarnpkg.com/@mo36924/babel-plugin-replace-import-extensions/-/babel-plugin-replace-import-extensions-0.0.11.tgz#2f2956bdc4f70ea75c0f96b14a871c0b23244c42"
   integrity sha512-9a8QRDBKV7Rw1naMt1F5yIf1o6YQtpS5dom8tqS5r8KtI27srpZ6ePlI6iWqBx9tl43o8FWCl/ydlVAIhG7ZuA==
-
-"@mo36924/build@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@mo36924/build/-/build-0.0.11.tgz#299ac401732053b2c85c20e71288cb538f3f9467"
-  integrity sha512-mj+QyO2EhrFmSD1QfdiugkMv7F3HO5X6yRT+CycbJ3S88Fo7dFd6J81wgedP0grm4gm1hGoULMYGibnVgr4RIQ==
-  dependencies:
-    "@babel/core" "^7.12.0"
-    "@babel/plugin-transform-modules-commonjs" "^7.10.4"
-    "@babel/preset-env" "^7.12.0"
-    "@babel/preset-react" "^7.10.4"
-    "@mo36924/babel-plugin-replace-import-extensions" "^0.0.11"
-    p-queue "^6.6.2"
-    prettier "^2.1.2"
-
-"@mo36924/create-package@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@mo36924/create-package/-/create-package-0.0.11.tgz#e21109df48497a02a24ce69b8ede8fda3164b93a"
-  integrity sha512-Pt+ycyu7rRMr24j+0edlDjCSHHNY+xFhd36bX0JqEEIqU3yUa4iLTNyJistk/dY1oqpUVONSWvW/1mDqk75XCw==
-  dependencies:
-    del "^6.0.0"
-    prettier "^2.1.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

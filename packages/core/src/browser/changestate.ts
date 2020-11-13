@@ -1,11 +1,4 @@
-declare global {
-  interface Window {
-    onchangestate?: null | ((this: Window, ev: Event) => any);
-  }
-  interface WindowEventMap {
-    changestate: Event;
-  }
-}
+import "../type";
 
 if (typeof window !== "undefined" && window.onchangestate === undefined) {
   window.onchangestate = null;
@@ -68,5 +61,3 @@ if (typeof window !== "undefined" && window.onchangestate === undefined) {
     } while ((t = t.parentNode));
   });
 }
-
-export {};

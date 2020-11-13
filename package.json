@@ -115,7 +115,9 @@
   "devDependencies": {
     "@types/babel__core": "^7.1.10",
     "@types/babel__preset-env": "^7.9.1",
+    "@types/jsesc": "^2.5.1",
     "@types/mysql": "^2.15.15",
+    "@types/node-fetch": "^2.5.7",
     "@types/pluralize": "^0.0.29",
     "@types/prettier": "^2.1.2",
     "@types/sqlstring": "^2.2.1",

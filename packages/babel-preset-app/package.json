@@ -1,0 +1,42 @@
+{
+  "name": "@mo36924/babel-preset-app",
+  "version": "0.0.14",
+  "description": "@mo36924/babel-preset-app",
+  "keywords": [
+    "babel-preset-app"
+  ],
+  "license": "MIT",
+  "author": "mo36924 <mo36924@users.noreply.github.com>",
+  "homepage": "https://github.com/mo36924/web-framework#readme",
+  "bugs": {
+    "url": "https://github.com/mo36924/web-framework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo36924/web-framework.git",
+    "directory": "packages/babel-preset-app"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@babel/preset-typescript": "^7.12.1"
+  }
+}

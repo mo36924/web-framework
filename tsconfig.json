@@ -17,7 +17,9 @@
     "emitBOM": false,
     "rootDir": "packages",
     "baseUrl": "packages",
-    "paths": { "@mo36924/*": ["*/src"] }
+    "paths": { "@mo36924/*": ["*/src"] },
+    "jsx": "preserve",
+    "jsxFactory": "preact.createElement"
   },
   "include": ["packages/*/src", "packages/*/__tests__"]
 }

@@ -25,20 +25,27 @@
   "bin": {
     "web-framework": "dist/cli/index.js"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/server/index.js",
+  "module": "dist/server/index.mjs",
+  "browser": "dist/browser/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "browser": "./dist/browser/index.mjs",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js"
     }
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "@mo36924/changestate": "^0.0.14",
     "@mo36924/route-generator": "^0.0.14",
     "commander": "^6.2.0",
-    "cosmiconfig": "^7.0.0"
+    "cosmiconfig": "^7.0.0",
+    "jsesc": "^3.0.2",
+    "node-fetch": "^2.6.1",
+    "preact": "^10.5.5",
+    "preact-render-to-string": "^5.1.11"
   }
 }

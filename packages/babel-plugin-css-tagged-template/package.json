@@ -1,9 +1,9 @@
 {
-  "name": "@mo36924/changestate",
+  "name": "@mo36924/babel-plugin-css-tagged-template",
   "version": "0.0.14",
-  "description": "@mo36924/changestate",
+  "description": "@mo36924/babel-plugin-css-tagged-template",
   "keywords": [
-    "changestate"
+    "babel-plugin-css-tagged-template"
   ],
   "license": "MIT",
   "author": "mo36924 <mo36924@users.noreply.github.com>",
@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mo36924/web-framework.git",
-    "directory": "packages/changestate"
+    "directory": "packages/babel-plugin-css-tagged-template"
   },
   "publishConfig": {
     "access": "public"
@@ -32,5 +32,10 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "cssnano-preset-advanced": "^4.0.7",
+    "postcss": "^7.0.35",
+    "postcss-nested": "^4.2.3"
   }
 }

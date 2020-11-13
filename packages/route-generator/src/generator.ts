@@ -14,7 +14,7 @@ export type Options = {
 };
 
 const defaultTemplate = `
-import "@mo36924/changestate";
+import { lazy } "@mo36924/core";
 import { createContext, Component, ComponentType } from "preact";
 /**__imports__**/
 

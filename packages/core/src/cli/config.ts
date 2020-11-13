@@ -6,7 +6,7 @@ export type Config = {
   filepath?: string;
 };
 
-const moduleName = "webFramework";
+const moduleName = "web-framework";
 
 export async function getConfig() {
   const result = await cosmiconfig(moduleName).search();

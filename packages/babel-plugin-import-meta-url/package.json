@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/babel-plugin-import-meta-url",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "@mo36924/babel-plugin-import-meta-url",
   "keywords": [
     "babel-plugin-import-meta-url"

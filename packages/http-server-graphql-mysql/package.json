@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/http-server-graphql-mysql",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "@mo36924/http-server-graphql-mysql",
   "keywords": [
     "http-server-graphql-mysql"
@@ -34,7 +34,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@mo36924/http-server": "^0.0.14",
+    "@mo36924/http-server": "^0.0.15",
     "accepts": "^1.3.7",
     "express-graphql": "^0.11.0",
     "graphql": "^15.4.0"

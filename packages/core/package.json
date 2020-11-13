@@ -1,6 +1,6 @@
 {
   "name": "@mo36924/core",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "@mo36924/core",
   "keywords": [
     "core"
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@mo36924/changestate": "^0.0.14",
-    "@mo36924/route-generator": "^0.0.14",
+    "@mo36924/route-generator": "^0.0.15",
     "commander": "^6.2.0",
     "cosmiconfig": "^7.0.0",
     "jsesc": "^3.0.2",
